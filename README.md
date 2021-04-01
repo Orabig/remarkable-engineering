@@ -24,8 +24,8 @@ particular, these have:
  * A couple of lines at the bottom for more free-form notes.
  
 The spacing is calibrated to the size of the reMarkable's screen.  Marks
-that are one centimeter apart on the reMarkable may have look different
-when exported from the device or reMarkable cloud.
+that are one centimeter apart on the reMarkable may look different when
+exported from the device or reMarkable cloud.
 
 
 Installation
