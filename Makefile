@@ -7,10 +7,12 @@ TEMPLATE_PNGS = $(TEMPLATE_PATHS:=.png)
 PNG_EXPORT = inkscape --export-area-page --export-width=1404 --export-height=1872
 SVG_EXPORT = inkscape
 
+.PHONY: all clean
+
 all: $(TEMPLATE_SVGS) $(TEMPLATE_PNGS)
 
 clean:
-	rm -f output/*.svg output/*.png
+	rm -rf output
 
 output/P_Engineering_Imperial.png: imperial-portrait.svg
 	$(PNG_EXPORT) --export-png="$@" $<
