@@ -26,11 +26,13 @@ thumbs: $(TEMPLATE_THUMBS)
 
 thumbs/P_%-thumb.png: output/P_%.png
 	mkdir -p thumbs
-	convert $< -resize 320x320 -gamma 0.4 $@
+	convert $< -colorspace Gray -gamma 0.4 -resize 320x320 $@
+	optipng $@
 
 thumbs/LS_%-thumb.png: output/LS_%.png
 	mkdir -p thumbs
-	convert $< -rotate 90 -resize 320x320 -gamma 0.4 $@
+	convert $< -colorspace Gray -gamma 0.4 -rotate 90 -resize 320x320 $@
+	optipng $@
 
 RELEASE = remarkable-engineering-$(GIT_VERSION)
 dist: build
