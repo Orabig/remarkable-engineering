@@ -2,13 +2,13 @@ reMarkable Engineering Templates
 ================================
 
 ![Imperial grid, portrait](https://static.aperiodic.net/remarkable-engineering/P_Engineering_Imperial-thumb.png)
-![Metric 2mm grid, portrait](https://static.aperiodic.net/remarkable-engineering/P_Engineering_Metric_2mm-thumb.png)
 ![Metric 5mm grid, portrait](https://static.aperiodic.net/remarkable-engineering/P_Engineering_Metric_5mm-thumb.png)
+![Metric 2mm grid, portrait](https://static.aperiodic.net/remarkable-engineering/P_Engineering_Metric_2mm-thumb.png)
 ![Imperial grid, landscape](https://static.aperiodic.net/remarkable-engineering/LS_Engineering_Imperial-thumb.png)
 
 These are a set of templates for the [reMarkable][] E Ink tablets.  They
-provide a more structured base than any of the stock grid templates in
-particular these have:
+provide a more structured base than any of the stock grid templates.  In
+particular, these have:
 
   [reMarkable]: https://remarkable.com
 
@@ -16,7 +16,7 @@ particular these have:
    them for page titles and dates, respectively.
    
  * A grid with major and minor grid lines.  The imperial templates have
-   major lines every inch and minor lines every eigth of an inch.  The
+   major lines every inch and minor lines every eighth of an inch.  The
    metric templates have major lines every centimeter and minor lines
    every five millimeters or every two millimeters, depending on the
    template.
@@ -24,8 +24,9 @@ particular these have:
  * A couple of lines at the bottom for more free-form notes.
  
 The spacing is calibrated to the size of the reMarkable's screen.  Marks
-that are one centimeter apart on the reMarkable may look differently when
-exported from the device or reMarkable cloud.
+that are one centimeter apart on the reMarkable may have look different
+when exported from the device or reMarkable cloud.
+
 
 Installation
 ------------
@@ -85,6 +86,7 @@ following `{` line.)
         ]
     },
 ```
+
 
 License
 -------
