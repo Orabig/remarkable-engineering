@@ -14,27 +14,8 @@ all: $(TEMPLATE_SVGS) $(TEMPLATE_PNGS)
 clean:
 	rm -rf output
 
-output/P_Engineering_Imperial.png: imperial-portrait.svg
+output/%.png: %.svg
 	$(PNG_EXPORT) --export-png="$@" $<
 
-output/P_Engineering_Imperial.svg: imperial-portrait.svg
+output/%.svg: %.svg
 	$(SVG_EXPORT) --export-plain-svg="$@" $<
-
-output/LS_Engineering_Imperial.png: imperial-landscape.svg
-	$(PNG_EXPORT) --export-png="$@" $<
-
-output/LS_Engineering_Imperial.svg: imperial-landscape.svg
-	$(SVG_EXPORT) --export-plain-svg="$@" $<
-
-output/P_Engineering_Metric_2mm.png: metric-2mm-portrait.svg
-	$(PNG_EXPORT) --export-png="$@" $<
-
-output/P_Engineering_Metric_2mm.svg: metric-2mm-portrait.svg
-	$(SVG_EXPORT) --export-plain-svg="$@" $<
-
-output/P_Engineering_Metric_5mm.png: metric-5mm-portrait.svg
-	$(PNG_EXPORT) --export-png="$@" $<
-
-output/P_Engineering_Metric_5mm.svg: metric-5mm-portrait.svg
-	$(SVG_EXPORT) --export-plain-svg="$@" $<
-
