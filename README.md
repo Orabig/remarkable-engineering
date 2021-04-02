@@ -25,7 +25,11 @@ particular, these have:
  
 The spacing is calibrated to the size of the reMarkable's screen.  Marks
 that are one centimeter apart on the reMarkable may look different when
-exported from the device or reMarkable cloud.
+exported from the device or reMarkable cloud.  Experimentation (with
+software version 2.6) indicates that the PDF export option should match
+the size pretty closely.  The PNG export will match the size for any
+program that understands the PNG's embedded DPI.  The SVG import will not
+match the dimensions of the tablet's image.
 
 
 Installation
