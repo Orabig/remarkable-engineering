@@ -85,6 +85,6 @@ This gives us:
 
 † The PDF export gives 227.16 DPI horizontally and 226.91 DPI vertically
 
-The width and height resulting from the assumtion that the 10.3″ diagonal
+The width and height resulting from the assumption that the 10.3″ diagonal
 is exact are themselves exact.  That seems a nice place to default to, so
 that's what these templates use.
