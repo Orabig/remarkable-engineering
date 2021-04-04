@@ -1,0 +1,8 @@
+[lines]
+grid_outline.in = 0.015
+grid_major.in = 0.010
+grid_minor.in = 0.005
+header_outline.in = 0.010
+footer_line.in = 0.010
+bg_color = 'white'
+line_color = '#B0B0B0'

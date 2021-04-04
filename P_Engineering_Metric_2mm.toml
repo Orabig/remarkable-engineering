@@ -1,0 +1,10 @@
+[layout]
+orientation = "portrait"
+header_height.mm = 6
+header_margin.mm = 3
+header_date_width.mm = 40
+grid_width.mm = 130
+grid_height.mm = 180
+grid_major.mm = 10
+grid_minor.mm = 2
+footer_spacing.mm = 6

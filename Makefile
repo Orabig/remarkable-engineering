@@ -8,7 +8,6 @@ TEMPLATE_THUMBS = $(addprefix thumbs/,$(TEMPLATE_BASES:=-thumb.png))
 GIT_VERSION := "$(shell git describe --abbrev=4 --dirty --always --tags)"
 
 PNG_EXPORT = inkscape --export-area-page --export-width=1404 --export-height=1872
-SVG_EXPORT = inkscape
 
 .PHONY: all build dist clean distclean thumbs
 
@@ -41,10 +40,10 @@ dist: build
 	zip -r $(RELEASE).zip $(RELEASE)
 	rm -rf $(RELEASE)
 
-output/%.png: %.svg
-	mkdir -p output
+output/%.png: output/%.svg
 	$(PNG_EXPORT) --export-png="$@" $<
+	optipng $@
 
-output/%.svg: %.svg
+output/%.svg: %.toml remarkable.toml lines.toml
 	mkdir -p output
-	$(SVG_EXPORT) --export-plain-svg="$@" $<
+	./draw-template.py -o $@ remarkable.toml lines.toml $<
