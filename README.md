@@ -83,7 +83,7 @@ following `{` line.)
     },
     {
         "name": "Engineering Grid, 2mm",
-        "filename": "LS_Engineering_Metric_2mm",
+        "filename": "P_Engineering_Metric_2mm",
         "iconCode": "\ue99e",
         "categories": [
             "Grids"
