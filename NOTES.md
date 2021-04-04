@@ -131,7 +131,9 @@ the positioning of the various elements.
 
 Note that many of the measurement names end in `.in`, which indicates that
 they're in inches.  Anything in the `lines` and `layout` sections may
-instead use `.cm` for centimeters or `.mm` for millimeters.
+instead use `.cm` for centimeters, `.mm` for millimeters, or `.px` for
+pixels.  Note that pixel measurements are not adjusted for the size of the
+screen.
 
 The template data may also be split across multiple files.  If you pass
 multiple files to `draw-template.py`, files later on the command line will

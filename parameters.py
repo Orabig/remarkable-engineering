@@ -34,7 +34,10 @@ class Parameters:
         self.dpi = max(width_dpi, height_dpi)
 
     def px(self, section, field):
-        return get_inches(self.definitions[section], field) * self.dpi
+        if 'px' in self.definitions[section][field]:
+            return self.definitions[section][field]['px']
+        else:
+            return get_inches(self.definitions[section], field) * self.dpi
 
     @property
     def landscapep(self):
@@ -119,4 +122,3 @@ class Parameters:
     @property
     def footer_spacing(self):
         return self.px('layout', 'footer_spacing')
-
