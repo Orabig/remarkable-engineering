@@ -32,6 +32,19 @@ def draw_svg(filename, parameters):
     draw_footer(drawing, main_group, parameters)
     
     drawing.save()
+
+def px_align(coordinate, line_thickness):
+    """Returns a value as close to the given coordinate as possible that
+    centers a line of the given thickness on the pixel grid.
+    """
+    # Note that when `1.5 <= line_thickness < 2`, the thickness is
+    # considered *odd*.  That's to ensure that at least one pixel is fully
+    # covered by the line.
+    is_even = 2 <= line_thickness and round(line_thickness) % 2 == 0
+    if is_even:
+        return round(coordinate)
+    else:
+        return round(coordinate + 0.5) - 0.5
     
 def draw_background(drawing, main_group, parameters):
     main_group.add(
@@ -44,25 +57,41 @@ def draw_header(drawing, main_group, parameters):
     header_group = drawing.g(fill='none',
                              stroke=parameters.line_color,
                              stroke_width=parameters.header_outline)
+
+    header_top = px_align(parameters.header_y, parameters.header_outline)
+    header_bottom = px_align(parameters.header_y + parameters.header_height, parameters.header_outline)
+    header_height = header_bottom - header_top
+    title_left = px_align(parameters.header_title_x, parameters.header_outline)
+    title_right = px_align(parameters.header_title_x + parameters.header_title_width, parameters.header_outline)
+    title_width = title_right - title_left
+    date_left = px_align(parameters.header_date_x, parameters.header_outline)
+    date_right = px_align(parameters.header_date_x + parameters.header_date_width, parameters.header_outline)
+    date_width = date_right - date_left
+    
     main_group.add(header_group)
     header_group.add(
         drawing.rect(
-            insert=(parameters.header_title_x, parameters.header_y),
-            size=(parameters.header_title_width, parameters.header_height)))
+            insert=(title_left, header_top),
+            size=(title_width, header_height)))
     header_group.add(
         drawing.rect(
-            insert=(parameters.header_date_x, parameters.header_y),
-            size=(parameters.header_date_width, parameters.header_height)))
+            insert=(date_left, header_top),
+            size=(date_width, header_height)))
     
 def draw_grid(drawing, main_group, parameters):
     grid_group = drawing.g(stroke=parameters.line_color)
     main_group.add(grid_group)
 
+    grid_left = px_align(parameters.grid_x, parameters.grid_outline)
+    grid_right = px_align(parameters.grid_x + parameters.grid_width, parameters.grid_outline)
+    grid_top = px_align(parameters.grid_y, parameters.grid_outline)
+    grid_bottom = px_align(parameters.grid_y + parameters.grid_height, parameters.grid_outline)
+    
     grid_group.add(
         drawing.rect(
             fill='none',
-            insert=(parameters.grid_x, parameters.grid_y),
-            size=(parameters.grid_width, parameters.grid_height),
+            insert=(grid_left, grid_top),
+            size=(grid_right - grid_left, grid_bottom - grid_top),
             stroke_width=parameters.grid_outline))
 
     major_group = drawing.g(stroke_width=parameters.grid_major_thickness)
@@ -70,18 +99,15 @@ def draw_grid(drawing, main_group, parameters):
     grid_group.add(major_group)
     grid_group.add(minor_group)
 
-    grid_left = parameters.grid_x
-    grid_right = parameters.grid_x + parameters.grid_width
-    grid_top = parameters.grid_y
-    grid_bottom = parameters.grid_y + parameters.grid_height
-    
     next_major = parameters.grid_major_spacing
     dy = parameters.grid_minor_spacing
     while dy < parameters.grid_height:
+        is_major = abs(next_major - dy) < parameters.grid_minor_spacing / 2
+        y = px_align(grid_top + dy, parameters.grid_major_thickness if is_major else parameters.grid_minor_thickness)
         new_line = drawing.line(
-            start=(grid_left, grid_top + dy),
-            end=(grid_right, grid_top + dy))
-        if abs(next_major - dy) < parameters.grid_minor_spacing / 2:
+            start=(grid_left, y),
+            end=(grid_right, y))
+        if is_major:
             major_group.add(new_line)
             next_major += parameters.grid_major_spacing
         else:
@@ -91,10 +117,12 @@ def draw_grid(drawing, main_group, parameters):
     next_major = parameters.grid_major_spacing
     dx = parameters.grid_minor_spacing
     while dx < parameters.grid_width:
+        is_major = abs(next_major - dx) < parameters.grid_minor_spacing / 2
+        x = px_align(grid_left + dx, parameters.grid_major_thickness if is_major else parameters.grid_minor_thickness)
         new_line = drawing.line(
-            start=(grid_left + dx, grid_top),
-            end=(grid_left + dx, grid_bottom))
-        if abs(next_major - dx) < parameters.grid_minor_spacing / 2:
+            start=(x, grid_top),
+            end=(x, grid_bottom))
+        if is_major:
             major_group.add(new_line)
             next_major += parameters.grid_major_spacing
         else:
@@ -107,13 +135,14 @@ def draw_footer(drawing, main_group, parameters):
         stroke_width=parameters.footer_line)
     main_group.add(footer_group)
     
-    line_left = parameters.grid_x
-    line_right = parameters.grid_x + parameters.grid_width
+    line_left = px_align(parameters.grid_x, parameters.grid_outline)
+    line_right = px_align(parameters.grid_x + parameters.grid_width, parameters.grid_outline)
     
     line_y = parameters.grid_y + parameters.grid_height + parameters.footer_spacing
     while line_y < parameters.template_height_px:
+        y = px_align(line_y, parameters.footer_line)
         footer_group.add(
             drawing.line(
-                start=(line_left, line_y),
-                end=(line_right, line_y)))
+                start=(line_left, y),
+                end=(line_right, y)))
         line_y += parameters.footer_spacing
