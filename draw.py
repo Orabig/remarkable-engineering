@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+import math
+
 import svgwrite
 
 def draw_svg(filename, parameters):
@@ -37,10 +39,7 @@ def px_align(coordinate, line_thickness):
     """Returns a value as close to the given coordinate as possible that
     centers a line of the given thickness on the pixel grid.
     """
-    # Note that when `1.5 <= line_thickness < 2`, the thickness is
-    # considered *odd*.  That's to ensure that at least one pixel is fully
-    # covered by the line.
-    is_even = 2 <= line_thickness and round(line_thickness) % 2 == 0
+    is_even = math.floor(line_thickness) % 2 == 0
     if is_even:
         return round(coordinate)
     else:
