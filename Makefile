@@ -5,6 +5,8 @@ TEMPLATE_SVGS = $(TEMPLATE_PATHS:=.svg)
 TEMPLATE_PNGS = $(TEMPLATE_PATHS:=.png)
 TEMPLATE_THUMBS = $(addprefix thumbs/,$(TEMPLATE_BASES:=-thumb.png))
 
+PROGRAM_FILES = draw-template.py parameters.py draw.py
+
 GIT_VERSION := "$(shell git describe --abbrev=4 --dirty --always --tags)"
 
 PNG_EXPORT = inkscape --export-area-page --export-width=1404 --export-height=1872
@@ -44,6 +46,6 @@ output/%.png: output/%.svg
 	$(PNG_EXPORT) --export-png="$@" $<
 	optipng $@
 
-output/%.svg: %.toml remarkable.toml lines.toml
+output/%.svg: %.toml remarkable.toml lines.toml $(PROGRAM_FILES)
 	mkdir -p output
 	./draw-template.py -o $@ remarkable.toml lines.toml $<
