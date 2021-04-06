@@ -5,6 +5,8 @@ reMarkable Engineering Templates
 ![Metric 5mm grid, portrait](https://static.aperiodic.net/remarkable-engineering/P_Engineering_Metric_5mm-thumb.png)
 ![Metric 2mm grid, portrait](https://static.aperiodic.net/remarkable-engineering/P_Engineering_Metric_2mm-thumb.png)
 ![Imperial grid, landscape](https://static.aperiodic.net/remarkable-engineering/LS_Engineering_Imperial-thumb.png)
+![Metric 5mm grid, landscape](https://static.aperiodic.net/remarkable-engineering/LS_Engineering_Metric_5mm-thumb.png)
+![Metric 2mm grid, landscape](https://static.aperiodic.net/remarkable-engineering/LS_Engineering_Metric_2mm-thumb.png)
 
 These are a set of templates for the [reMarkable][] E Ink tablets.  They
 provide a more structured base than any of the stock grid templates.  In
@@ -82,9 +84,27 @@ following `{` line.)
         ]
     },
     {
+        "name": "Engineering Grid, 5mm",
+        "filename": "LS_Engineering_Metric_5mm",
+        "iconCode": "\ue9fa",
+        "landscape": true,
+        "categories": [
+            "Grids"
+        ]
+    },
+    {
         "name": "Engineering Grid, 2mm",
         "filename": "P_Engineering_Metric_2mm",
         "iconCode": "\ue99e",
+        "categories": [
+            "Grids"
+        ]
+    },
+    {
+        "name": "Engineering Grid, 2mm",
+        "filename": "LS_Engineering_Metric_2mm",
+        "iconCode": "\ue9fa",
+        "landscape": true,
         "categories": [
             "Grids"
         ]

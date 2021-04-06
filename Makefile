@@ -1,4 +1,4 @@
-TEMPLATE_BASES = LS_Engineering_Imperial P_Engineering_Imperial P_Engineering_Metric_2mm P_Engineering_Metric_5mm
+TEMPLATE_BASES = LS_Engineering_Imperial P_Engineering_Imperial LS_Engineering_Metric_2mm P_Engineering_Metric_2mm LS_Engineering_Metric_5mm P_Engineering_Metric_5mm
 
 TEMPLATE_PATHS = $(addprefix output/,$(TEMPLATE_BASES))
 TEMPLATE_SVGS = $(TEMPLATE_PATHS:=.svg)
