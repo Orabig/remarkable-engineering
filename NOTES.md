@@ -129,11 +129,22 @@ The `screen` section describes the reMarkable's screen, the `lines`
 section has basic drawing primitives, and the `layout` section describes
 the positioning of the various elements.
 
-Note that many of the measurement names end in `.in`, which indicates that
-they're in inches.  Anything in the `lines` and `layout` sections may
-instead use `.cm` for centimeters, `.mm` for millimeters, or `.px` for
-pixels.  Note that pixel measurements are not adjusted for the size of the
-screen.
+The distance-related measurements indicate their units via "extensions"
+for the keys.  Valid units include:
+
+ * `in` for inches (as in the example above)
+ * `cm` for centimeters
+ * `mm` for millimeters
+ * `px` for pixels
+
+The `width` and `height` keys in the `screen` section must have a `px`
+value and one other distance value.  (The program uses those two values to
+calculate the pixel density and positioning of elements on the template.)
+
+Distance settings in the `lines` and `layout` sections may use any valid
+unit.  Pixel values will not be adjusted for the screen's pixel density;
+all other units will be.  The effects of providing more than one unit for
+the same setting are undefined.
 
 The template data may also be split across multiple files.  If you pass
 multiple files to `draw-template.py`, files later on the command line will
