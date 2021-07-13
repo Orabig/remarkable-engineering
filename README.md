@@ -45,16 +45,31 @@ to the reMarkable for each template you want to use!
 
   [releases]: https://gitlab.com/asciiphil/remarkable-engineering/-/releases
 
-It's probably easiest to use the [Remarkable Assistant][RMA] or
-[reMarkable Connection Utility][RCU] to add the templates to your tablet.
+It's probably easiest to use the [reMarkable Connection Utility][RCU] or
+[Remarkable Assistant][RMA] to add the templates to your tablet.
 
   [RMA]: https://github.com/richeymichael/remarkable-assistant
   [RCU]: http://www.davisr.me/projects/rcu/
 
-If you want to do it by hand, use an SCP client to copy the files to
-`/usr/share/remarkable/templates/` on the reMarkable, then edit
-`/usr/share/remarkable/templates/templates.json` and add the following
-JSON text to the file.  (Add the text between one `},` line and the
+If you want to do it more manually, use an SCP client to copy the files to
+`/usr/share/remarkable/templates/` on the reMarkable, then add entries for
+them to `/usr/share/remarkable/templates/templates.json`.
+
+If you have [templatectl][] installed, you can use one or more of the
+following commands:
+
+  [templatectl]: https://github.com/PeterGrace/templatectl
+
+    templatectl add --name 'Engineering Grid 1/8" P' --filename 'P_Engineering_Imperial' --category Grids --icon_code e99e
+    templatectl add --name 'Engineering Grid 1/8" LS' --filename 'LS_Engineering_Imperial' --category Grids --icon_code e99e --landscape
+    templatectl add --name 'Engineering Grid 2mm P' --filename 'P_Engineering_Metric_2mm' --category Grids --icon_code e99e
+    templatectl add --name 'Engineering Grid 2mm LS' --filename 'LS_Engineering_Metric_2mm' --category Grids --icon_code e99e --landscape
+    templatectl add --name 'Engineering Grid 5mm P' --filename 'P_Engineering_Metric_5mm' --category Grids --icon_code e99e
+    templatectl add --name 'Engineering Grid 5mm LS' --filename 'LS_Engineering_Metric_5mm' --category Grids --icon_code e99e --landscape
+
+Otherwise, you'll have to edit
+`/usr/share/remarkable/templates/templates.json` by hand and add the
+following JSON text.  (Add the text between one `},` line and the
 following `{` line.)
 
 ```json
