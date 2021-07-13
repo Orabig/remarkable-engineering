@@ -5,6 +5,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2.3] - 2021-07-13
+### Changed
+- Updated reMarkable physical screen dimensions based on official specs
+  from the display manufacturer.  This should technically be slightly more
+  correct.  It's a difference of only a hundredth of an inch, though, so
+  it shouldn't really look that different in practice.
+
 ## [2.2] - 2021-04-06
 ### Added
 - Landscape templates for the 2mm and 3mm metric templates
@@ -23,7 +30,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 - Initial public release
 
-[Unreleased]: https://gitlab.com/asciiphil/remarkable-engineering/-/compare/2.2...master
+[Unreleased]: https://gitlab.com/asciiphil/remarkable-engineering/-/compare/2.3...master
+[2.3]: https://gitlab.com/asciiphil/remarkable-engineering/-/compare/2.2...2.3
 [2.2]: https://gitlab.com/asciiphil/remarkable-engineering/-/compare/2.1...2.2
 [2.1]: https://gitlab.com/asciiphil/remarkable-engineering/-/compare/2.0...2.1
 [2.0]: https://gitlab.com/asciiphil/remarkable-engineering/-/compare/1.0...2.0
