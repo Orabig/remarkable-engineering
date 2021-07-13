@@ -1,29 +1,25 @@
 Screen Size
 -----------
 
-There are no official specs on the dimensions of the screen, but there are
-inferences we can make.
+According to [the E Ink Customer Showcase][eink-customers], the reMarkable
+2 uses a [10.3″ E Ink Carta Display][10.3-carta].  The specs for that
+display say it has a 157.25 mm × 209.66 mm active area (6.1909″ ×
+8.2543″), so that's the size targeted by these templates.
 
-### Official Spec Derivations
+  [eink-customers]: https://www.eink.com/reading-writing.html?type=application&id=2
+  [10.3-carta]: https://www.eink.com/product.html?type=productdetail&id=7
 
-The screen is, officially a 1404×1872 pixel display with a 10.3″ diagonal
-and 226 DPI.  If we assume that there's some rounding involved, we can
-conclude that the diagonal must be between 10.25″ and 10.35″, while the
-DPI must be between 225.5 and 226.5.  As the following table shows, that
-gives us a width between 6.199″ and 6.210″ and a height between 8.265″ and
-8.280″.
+Since the display is 1404x1872 pixels, that gives roughly 226.785 DPI.
+(Horizontal DPI is 226.78 and vertical DPI is 226.79.)
 
-|                  | Width (in) | Height (in) |
-|------------------|------------|-------------|
-| min diag (10.25) |     6.1500 |      8.2000 |
-| max DPI (226.5)  |     6.1987 |      8.2649 |
-| max diag (10.35) |     6.2100 |      8.2800 |
-| min DPI (225.5)  |     6.2262 |      8.3016 |
+It's unclear whether the reMarkable 1 uses the exact same display, but the
+pixel resolution is identical and the size appears to be the same, so we
+can treat it identically to the reMarkable 2.
 
 ### Exported Files
 
-Furthermore, when you export images from your reMarkable, they come out as
-follows:
+It's interesting to compare the official size to the files exported by the
+reMarkable.  All numbers below were as exported by firmware 2.8.
 
 #### SVG Export
 
@@ -63,31 +59,9 @@ The exported PDFs have a media box of 445×594 points, which gives:
 | Width (in, calculated)  | 6.1806 |
 | Height (in, calculated) | 8.2500 |
 
-### Other Sources of Information
+#### Export Formats, Conclusion
 
-[One reMarkable review][pjm-review] says the screen is 15.6×21
-centimeters, which translates into 6.142×8.268 inches and 228.6×226.4 DPI.
-That seems pretty far outside the other measurements.
-
-  [pjm-review]: https://pauljmiller.wordpress.com/2017/11/23/a-review-of-the-remarkable-tablet/
-
-### Compiled Results
-
-This gives us:
-
-| Measurement Source     | DPI    | Width (in) | Height (in) |
-|------------------------|--------|------------|-------------|
-| PNG Export             | 227.99 |     6.1582 |      8.2109 |
-| Exactly 10.3″ diagonal | 227.18 |     6.1800 |      8.2400 |
-| PDF Export             | †      |     6.1806 |      8.2500 |
-| Min for official specs | 226.50 |     6.1987 |      8.2649 |
-| Max for official specs | 226.09 |     6.2100 |      8.2800 |
-
-† The PDF export gives 227.16 DPI horizontally and 226.91 DPI vertically
-
-The width and height resulting from the assumption that the 10.3″ diagonal
-is exact are themselves exact.  That seems a nice place to default to, so
-that's what these templates use.
+The PDF export seems to be the one closest in size to the actual screen.
 
 
 TOML Source Files
@@ -99,8 +73,8 @@ like this:
 
 ```toml
 [screen]
-width.in = 6.18
-height.in = 8.24
+width.mm = 157.25
+height.mm = 209.66
 width.px = 1404
 height.px = 1872
 
