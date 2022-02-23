@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added
+- Added the ability to generate log-scaled grids, in either or both
+  directions.
+- Added portrait and landscape log and semilog templates.
+
 ## [2.3] - 2021-07-13
 ### Changed
 - Updated reMarkable physical screen dimensions based on official specs
