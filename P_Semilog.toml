@@ -1,0 +1,12 @@
+[layout]
+orientation = "portrait"
+x_scale = "log"
+y_scale = "linear"
+header_height.in = 0.25
+header_margin.in = 0.125
+header_date_width.in = 1.5
+grid_width.in = 5
+grid_height.in = 7
+grid_major.in = 1
+grid_minor.in = 0.1
+footer_spacing.in = 0.25
