@@ -89,6 +89,8 @@ line_color = '#B0B0B0'
 
 [layout]
 orientation = "portrait"
+x_scale = "linear"
+y_scale = "linear"
 header_height.in = 0.25
 header_margin.in = 0.125
 header_date_width.in = 1.5
@@ -119,6 +121,12 @@ Distance settings in the `lines` and `layout` sections may use any valid
 unit.  Pixel values will not be adjusted for the screen's pixel density;
 all other units will be.  The effects of providing more than one unit for
 the same setting are undefined.
+
+If one or both of `x_scale` and `y_scale` are set to "log", the grid in
+the given direction will keep the same spacing for the major lines, but
+the minor lines will follow a logarithmic progression.  For log scaling,
+the `grid_minor` setting will be used to determine how many minor lines to
+draw.
 
 The template data may also be split across multiple files.  If you pass
 multiple files to `draw-template.py`, files later on the command line will

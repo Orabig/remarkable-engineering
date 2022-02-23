@@ -120,5 +120,13 @@ class Parameters:
         return self.px('layout', 'grid_minor')
 
     @property
+    def grid_scale_x(self):
+        return self.definitions['layout'].get('x_scale', 'linear')
+    
+    @property
+    def grid_scale_y(self):
+        return self.definitions['layout'].get('y_scale', 'linear')
+    
+    @property
     def footer_spacing(self):
         return self.px('layout', 'footer_spacing')
