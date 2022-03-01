@@ -66,10 +66,10 @@ following commands:
 
     templatectl add --name 'Engineering Grid 1/8" P' --filename 'P_Engineering_Imperial' --category Grids --icon_code e99e
     templatectl add --name 'Engineering Grid 1/8" LS' --filename 'LS_Engineering_Imperial' --category Grids --icon_code e9fa --landscape
-    templatectl add --name 'Engineering Grid Log-Log P' --filename 'P_Engineering_Log --category Grids --icon_code e99e
-    templatectl add --name 'Engineering Grid Log-Log LS' --filename 'LS_Engineering_Log --category Grids --icon_code e9fa
-    templatectl add --name 'Engineering Grid Semilog P' --filename 'P_Engineering_Semilog --category Grids --icon_code e99e
-    templatectl add --name 'Engineering Grid Semilog LS' --filename 'LS_Engineering_Semilog --category Grids --icon_code e9fa
+    templatectl add --name 'Engineering Grid Log-Log P' --filename 'P_Engineering_Log' --category Grids --icon_code e99e
+    templatectl add --name 'Engineering Grid Log-Log LS' --filename 'LS_Engineering_Log' --category Grids --icon_code e9fa
+    templatectl add --name 'Engineering Grid Semilog P' --filename 'P_Engineering_Semilog' --category Grids --icon_code e99e
+    templatectl add --name 'Engineering Grid Semilog LS' --filename 'LS_Engineering_Semilog' --category Grids --icon_code e9fa
     templatectl add --name 'Engineering Grid 2mm P' --filename 'P_Engineering_Metric_2mm' --category Grids --icon_code e99e
     templatectl add --name 'Engineering Grid 2mm LS' --filename 'LS_Engineering_Metric_2mm' --category Grids --icon_code e9fa --landscape
     templatectl add --name 'Engineering Grid 5mm P' --filename 'P_Engineering_Metric_5mm' --category Grids --icon_code e99e
