@@ -5,12 +5,12 @@ reMarkable Engineering Templates
 ![Metric 5mm grid, portrait](https://static.aperiodic.net/remarkable-engineering/P_Engineering_Metric_5mm-thumb.png)
 ![Metric 2mm grid, portrait](https://static.aperiodic.net/remarkable-engineering/P_Engineering_Metric_2mm-thumb.png)
 ![Logarithmic grid, portrait](https://static.aperiodic.net/remarkable-engineering/P_Engineering_Log-thumb.png)
-![Semilogarithmic grid, portrait](https://static.aperiodic.net/remarkable-engineering/P_Semiog-thumb.png)
+![Semilogarithmic grid, portrait](https://static.aperiodic.net/remarkable-engineering/P_Engineering_Semiog-thumb.png)
 ![Imperial grid, landscape](https://static.aperiodic.net/remarkable-engineering/LS_Engineering_Imperial-thumb.png)
 ![Metric 5mm grid, landscape](https://static.aperiodic.net/remarkable-engineering/LS_Engineering_Metric_5mm-thumb.png)
 ![Metric 2mm grid, landscape](https://static.aperiodic.net/remarkable-engineering/LS_Engineering_Metric_2mm-thumb.png)
 ![Logarithmic grid, landscape](https://static.aperiodic.net/remarkable-engineering/LS_Engineering_Log-thumb.png)
-![Semilogarithmic grid, landscape](https://static.aperiodic.net/remarkable-engineering/LS_Semiog-thumb.png)
+![Semilogarithmic grid, landscape](https://static.aperiodic.net/remarkable-engineering/LS_Engineering_Semiog-thumb.png)
 
 These are a set of templates for the [reMarkable][] E Ink tablets.  They
 provide a more structured base than any of the stock grid templates.  In
