@@ -9,7 +9,7 @@ PROGRAM_FILES = draw-template.py parameters.py draw.py
 
 GIT_VERSION := "$(shell git describe --abbrev=4 --dirty --always --tags)"
 
-PNG_EXPORT = inkscape --export-area-page --export-width=1404 --export-height=1872
+PNG_EXPORT = inkscape --export-type=png --export-area-page --export-width=1404 --export-height=1872 --export-dpi=227
 
 .PHONY: all build dist clean distclean thumbs
 
@@ -42,9 +42,16 @@ dist: build
 	zip -r $(RELEASE).zip $(RELEASE)
 	rm -rf $(RELEASE)
 
+# Inkscape will generate RGBA PNGs.  By default, optipng will reduce those
+# to paletted 8-bit PNGs.  But the reMarkable can't handle paletted PNGs,
+# so we have to use `-nc` to prevent color map alterations.
+#
+# TODO: See if reMarkable likes greyscale, non-transparent PNGs.  Might
+# have to use Imagemagick to convert; doesn't look like Inkscape will
+# output anything but RGBA PNGs.
 output/%.png: output/%.svg
-	$(PNG_EXPORT) --export-png="$@" $<
-	optipng $@
+	$(PNG_EXPORT) --export-filename="$@" $<
+	optipng -nc $@
 
 output/%.svg: %.toml remarkable.toml lines.toml $(PROGRAM_FILES)
 	mkdir -p output

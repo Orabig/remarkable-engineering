@@ -10,6 +10,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   directions.
 - Added portrait and landscape log and semilog templates.
 
+### Fixed
+- The programs sometimes generated paletted PNGs that caused xochitl on
+  the reMarkable to crash.  All PNGs should now be safe.  Closes [#2][issue-2].
+
+  [issue-2]: https://gitlab.com/asciiphil/remarkable-engineering/-/issues/2
+
 ## [2.3] - 2021-07-13
 ### Changed
 - Updated reMarkable physical screen dimensions based on official specs
