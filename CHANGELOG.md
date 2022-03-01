@@ -5,10 +5,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [2.4] - 2022-03-01
+
 ### Added
 - Added the ability to generate log-scaled grids, in either or both
   directions.
-- Added portrait and landscape log and semilog templates.
+- Added portrait and landscape log and semilog templates.  Closes
+  [#1][issue-1].
+
+  [issue-1]: https://gitlab.com/asciiphil/remarkable-engineering/-/issues/1
 
 ### Fixed
 - The programs sometimes generated paletted PNGs that caused xochitl on
@@ -41,7 +46,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Added
 - Initial public release
 
-[Unreleased]: https://gitlab.com/asciiphil/remarkable-engineering/-/compare/2.3...master
+[Unreleased]: https://gitlab.com/asciiphil/remarkable-engineering/-/compare/2.4...master
+[2.4]: https://gitlab.com/asciiphil/remarkable-engineering/-/compare/2.3...2.4
 [2.3]: https://gitlab.com/asciiphil/remarkable-engineering/-/compare/2.2...2.3
 [2.2]: https://gitlab.com/asciiphil/remarkable-engineering/-/compare/2.1...2.2
 [2.1]: https://gitlab.com/asciiphil/remarkable-engineering/-/compare/2.0...2.1
