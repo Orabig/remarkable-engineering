@@ -5,6 +5,7 @@ TEMPLATE_BASES = \
 	P_Engineering_Log LS_Engineering_Log \
 	P_Engineering_Semilog LS_Engineering_Semilog
 
+TEMPLATE_SOURCES = $(addprefix src/,$(TEMPLATE_BASES))
 TEMPLATE_PATHS = $(addprefix output/,$(TEMPLATE_BASES))
 TEMPLATE_SVGS = $(TEMPLATE_PATHS:=.svg)
 TEMPLATE_PNGS = $(TEMPLATE_PATHS:=.png)
@@ -58,6 +59,6 @@ output/%.png: output/%.svg
 	$(PNG_EXPORT) --export-filename="$@" $<
 	optipng -nc $@
 
-output/%.svg: %.toml remarkable.toml lines.toml $(PROGRAM_FILES)
+output/%.svg: src/%.toml src/remarkable.toml src/lines.toml $(PROGRAM_FILES)
 	mkdir -p output
-	./draw-template.py -o $@ remarkable.toml lines.toml $<
+	./draw-template.py -o $@ src/remarkable.toml src/lines.toml $<
