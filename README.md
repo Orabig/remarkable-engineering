@@ -21,11 +21,18 @@ particular, these have:
  * A header line with a large and small information box.  The author uses
    them for page titles and dates, respectively.
    
- * A grid with major and minor grid lines.  The imperial templates have
-   major lines every inch and minor lines every eighth of an inch.  The
-   metric templates have major lines every centimeter and minor lines
-   every five millimeters or every two millimeters, depending on the
-   template.
+ * A grid with major and minor grid lines.
+ 
+   * The imperial templates have major lines every inch and minor lines
+     every eighth of an inch.
+   
+   * The metric templates have major lines every centimeter and minor
+     lines every five millimeters or every two millimeters, depending on
+     the template.
+   
+   * The log and semilog templates have major lines spaced every inch and
+     minor lines spaced according to a base ten logarithm.  (In other
+     words, each successive major line is a successive power of ten.)
    
  * A couple of lines at the bottom for more free-form notes.
  
