@@ -44,6 +44,23 @@ the size pretty closely.  The PNG export will match the size for any
 program that understands the PNG's embedded DPI.  The SVG export will not
 match the dimensions of the tablet's image.
 
+Prerequesites
+-------------
+
+If you want to build SVG and PNG yourself, you have to install the following :
+
+```
+$ sudo apt-get install python3
+$ pip3 install svgwrite toml
+$ sudo apt-get install inkscape optipng
+```
+
+Then, run :
+
+```
+$ make
+```
+
 
 Installation
 ------------
