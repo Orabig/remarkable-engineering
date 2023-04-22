@@ -72,13 +72,17 @@ class Parameters:
         return self.px('lines', 'footer_line')
 
     @property
+    def scale_font_size(self):
+        return self.px('lines', 'scale_font_size')
+
+    @property
     def header_y(self):
         return self.px('layout', 'header_margin')
-    
+
     @property
     def header_height(self):
         return self.px('layout', 'header_height')
-    
+
     @property
     def header_title_x(self):
         return self.grid_x
@@ -86,7 +90,7 @@ class Parameters:
     @property
     def header_title_width(self):
         return self.grid_width - self.header_date_width - self.px('layout', 'header_margin')
-    
+
     @property
     def header_date_x(self):
         return self.grid_x + self.grid_width - self.header_date_width
@@ -122,11 +126,27 @@ class Parameters:
     @property
     def grid_scale_x(self):
         return self.definitions['layout'].get('x_scale', 'linear')
-    
+
     @property
     def grid_scale_y(self):
         return self.definitions['layout'].get('y_scale', 'linear')
-    
+
+    @property
+    def grid_time_x_start(self):
+        return self.definitions['layout'].get('x_time_start', 1)
+
+    @property
+    def grid_time_x_end(self):
+        return self.definitions['layout'].get('x_time_end', 3600 * 48)
+
+    @property
+    def grid_time_y_start(self):
+        return self.definitions['layout'].get('y_time_start', 1)
+
+    @property
+    def grid_time_y_end(self):
+        return self.definitions['layout'].get('y_time_end', 3600 * 48)
+
     @property
     def footer_spacing(self):
         return self.px('layout', 'footer_spacing')
