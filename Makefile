@@ -16,7 +16,7 @@ PROGRAM_FILES = draw-template.py parameters.py draw.py
 
 GIT_VERSION := "$(shell git describe --abbrev=4 --dirty --always --tags)"
 
-PNG_EXPORT = inkscape --export-type=png --export-area-page --export-width=1404 --export-height=1872 --export-dpi=227
+PNG_EXPORT = inkscape --export-area-page --export-width=1404 --export-height=1872 --export-dpi=227
 
 .PHONY: all build dist clean distclean thumbs
 
@@ -57,7 +57,7 @@ dist: build
 # have to use Imagemagick to convert; doesn't look like Inkscape will
 # output anything but RGBA PNGs.
 output/%.png: output/%.svg
-	$(PNG_EXPORT) --export-filename="$@" $<
+	$(PNG_EXPORT) --export-png="$@" $<
 	optipng -nc $@
 
 output/%.svg: src/%.toml src/remarkable.toml src/lines.toml $(PROGRAM_FILES)
