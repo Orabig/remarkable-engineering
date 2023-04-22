@@ -113,11 +113,11 @@ class Parameters:
     
     @property
     def grid_major_spacing(self):
-        return self.px('layout', 'grid_major')
+        return self.px('layout', 'grid_major_spacing')
 
     @property
     def grid_minor_spacing(self):
-        return self.px('layout', 'grid_minor')
+        return self.px('layout', 'grid_minor_spacing')
 
     @property
     def grid_scale_x(self):
