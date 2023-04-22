@@ -1,7 +1,9 @@
 [layout]
 orientation = "landscape"
 x_scale = "log"
-y_scale = "log"
+y_scale = "timelog"
+y_time_start = 20
+y_time_end = 174800
 header_height.in = 0.25
 header_margin.in = 0.125
 header_date_width.in = 1.5

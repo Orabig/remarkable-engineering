@@ -6,3 +6,4 @@ header_outline.in = 0.010
 footer_line.in = 0.010
 bg_color = 'white'
 line_color = '#B0B0B0'
+scale_font_size.px = 16

@@ -3,6 +3,7 @@ TEMPLATE_BASES = \
 	LS_Engineering_Metric_2mm P_Engineering_Metric_2mm \
 	LS_Engineering_Metric_5mm P_Engineering_Metric_5mm \
 	P_Engineering_Log LS_Engineering_Log \
+	P_Engineering_Durationlog LS_Engineering_Durationlog \
 	P_Engineering_Semilog LS_Engineering_Semilog
 
 TEMPLATE_SOURCES = $(addprefix src/,$(TEMPLATE_BASES))
