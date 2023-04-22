@@ -93,50 +93,59 @@ def draw_grid(drawing, main_group, parameters):
             insert=(grid_left, grid_top),
             size=(grid_right - grid_left, grid_bottom - grid_top),
             stroke_width=parameters.grid_outline))
-
     major_group = drawing.g(stroke_width=parameters.grid_major_thickness)
     minor_group = drawing.g(stroke_width=parameters.grid_minor_thickness)
     grid_group.add(major_group)
     grid_group.add(minor_group)
 
-    major_horizontals = np.linspace(0, parameters.grid_height, 1 + round(parameters.grid_height / parameters.grid_major_spacing))
-    if parameters.grid_scale_y == 'log':
-        minor_horizontals = parameters.grid_major_spacing - (np.log(np.linspace(1, 10, 1 + round(parameters.grid_major_spacing / parameters.grid_minor_spacing))) / np.log(10) * parameters.grid_major_spacing)
-    else:
-        minor_horizontals = np.linspace(0, parameters.grid_major_spacing, 1 + round(parameters.grid_major_spacing / parameters.grid_minor_spacing))
-    for dy_major in major_horizontals[:-1]:
-        y_major = px_align(grid_top + dy_major, parameters.grid_major_thickness)
-        if dy_major > 0:
-            new_line = drawing.line(
-                start=(grid_left, y_major),
-                end=(grid_right, y_major))
-            major_group.add(new_line)
-        for dy_minor in minor_horizontals[1:-1]:
-            y_minor = px_align(y_major + dy_minor, parameters.grid_minor_thickness)
-            new_line = drawing.line(
-                start=(grid_left, y_minor),
-                end=(grid_right, y_minor))
-            minor_group.add(new_line)
+    draw_horizontal_grid(drawing, grid_group, major_group, minor_group, grid_left, grid_right, grid_top, grid_bottom, parameters)
+    draw_vertical_grid(drawing, grid_group, major_group, minor_group, grid_left, grid_right, grid_top, grid_bottom, parameters)
 
-    major_verticals = np.linspace(0, parameters.grid_width, 1 + round(parameters.grid_width / parameters.grid_major_spacing))
-    if parameters.grid_scale_x == 'log':
-        minor_verticals = np.log(np.linspace(1, 10, 1 + round(parameters.grid_major_spacing / parameters.grid_minor_spacing))) / np.log(10) * parameters.grid_major_spacing
+# Merge identical minor scales into a major one
+def merge_scales(majors, minors):
+    return list(map(lambda major: list(map(lambda minor: major + minor, minors)), majors))
+
+# Fills 'width' pixels with a major/minor scale.
+# Returns an array of x/y coordinates arrays, each starting with a major point.
+# [ [ major_0(==0), minor_0_0, minor_0_1, ...], [major_1, minor_1_0, ...], ... ]
+def compute_scale(width, type, major_spacing, minor_spacing):
+    major_count = 1 + round(width / major_spacing)
+    real_spacing = width / major_count
+    major_lines = np.linspace(0, width, major_count, endpoint=False)
+    if type == 'log':
+        minor_lines = real_spacing - (np.log(np.linspace(1, 10, 1 + round(real_spacing / minor_spacing), endpoint=False)) / np.log(10) * real_spacing)
     else:
-        minor_verticals = np.linspace(0, parameters.grid_major_spacing, 1 + round(parameters.grid_major_spacing / parameters.grid_minor_spacing))
-    for dx_major in major_verticals[:-1]:
-        x_major = px_align(grid_left + dx_major, parameters.grid_major_thickness)
-        if dx_major > 0:
-            new_line = drawing.line(
-                start=(x_major, grid_top),
-                end=(x_major, grid_bottom))
-            major_group.add(new_line)
-        for dx_minor in minor_verticals[1:-1]:
-            x_minor = px_align(x_major + dx_minor, parameters.grid_minor_thickness)
-            new_line = drawing.line(
-                start=(x_minor, grid_top),
-                end=(x_minor, grid_bottom))
-            minor_group.add(new_line)
-        
+        minor_lines = np.linspace(0, real_spacing, 1 + round(real_spacing / minor_spacing), endpoint=False)
+    return merge_scales(major_lines, minor_lines)
+
+def draw_horizontal_line(drawing, group, grid_left, grid_right, y, thickness):
+        y_centered = px_align(y, thickness)
+        new_line = drawing.line(
+            start=(grid_left, y_centered),
+            end=(grid_right, y_centered))
+        group.add(new_line)
+
+def draw_vertical_line(drawing, group, grid_top, grid_bottom, x, thickness):
+        x_centered = px_align(x, thickness)
+        new_line = drawing.line(
+            start=(x_centered, grid_top),
+            end=(x_centered, grid_bottom))
+        group.add(new_line)
+
+def draw_horizontal_grid(drawing, grid_group, major_group, minor_group, grid_left, grid_right, grid_top, grid_bottom, parameters):
+    horizontals = compute_scale(parameters.grid_height, parameters.grid_scale_y, parameters.grid_major_spacing, parameters.grid_minor_spacing)
+    for dy_major in horizontals:
+        draw_horizontal_line(drawing, major_group, grid_left, grid_right, grid_top + dy_major[0], parameters.grid_major_thickness)
+        for dy_minor in dy_major[1:]:
+            draw_horizontal_line(drawing, minor_group, grid_left, grid_right, grid_top + dy_minor, parameters.grid_minor_thickness)
+
+def draw_vertical_grid(drawing, grid_group, major_group, minor_group, grid_left, grid_right, grid_top, grid_bottom, parameters):
+    verticals = compute_scale(parameters.grid_width, parameters.grid_scale_x, parameters.grid_major_spacing, parameters.grid_minor_spacing)
+    for dx_major in verticals:
+        draw_vertical_line(drawing, major_group, grid_top, grid_bottom, grid_left + dx_major[0], parameters.grid_major_thickness)
+        for dx_minor in dx_major[1:]:
+            draw_vertical_line(drawing, minor_group, grid_top, grid_bottom, grid_left + dx_minor, parameters.grid_minor_thickness)
+
 def draw_footer(drawing, main_group, parameters):
     footer_group = drawing.g(
         stroke=parameters.line_color,
